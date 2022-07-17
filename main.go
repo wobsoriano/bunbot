@@ -158,4 +158,8 @@ func MoveSmooth(x, y int, low, high float64) bool {
 	return robotgo.MoveSmooth(x, y, low, high)
 }
 
-func main() {} // Required but ignored
+func main() {
+	SetMouseSleep(100)
+	robotgo.ScrollMouse(10, "up")
+	robotgo.ScrollMouse(10, "down")
+} // Required but ignored

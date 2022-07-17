@@ -5,7 +5,9 @@ import {
   getScreenSize,
   getScaleSize,
   move,
-  moveSmooth
+  moveSmooth,
+  setMouseSleep,
+  scrollMouse
 } from '../src'
 
 test('getVersion', () => {
@@ -27,11 +29,17 @@ describe('Screen functions', () => {
 })
 
 describe('Mouse functions', () => {
+  setMouseSleep(100)
+
   test('move', () => {
     // move(500, 500)
   })
 
   test('moveSmooth', () => {
     // moveSmooth(100, 100)
+  })
+
+  test('scrollMouse', () => {
+    scrollMouse(100, "up")
   })
 })

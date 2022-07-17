@@ -1,12 +1,13 @@
-import { dlopen, FFIType, suffix } from 'bun:ffi'
-import { toString } from './utils'
+import { dlopen, FFIType, ptr } from 'bun:ffi'
+import { toString, encode } from './utils'
 
 export type Coords = {
   x: number
   y: number
 }
 
-const { symbols } = dlopen(`${import.meta.dir}/../release/bunbot.${suffix}`, {
+const fileName = `${process.platform}-${process.arch}`
+const { symbols } = dlopen(`${import.meta.dir}/../release/${fileName}`, {
   GetVersion: {
     args: [],
     returns: FFIType.ptr
@@ -25,6 +26,14 @@ const { symbols } = dlopen(`${import.meta.dir}/../release/bunbot.${suffix}`, {
     returns: FFIType.ptr
   },
   // Mouse
+  SetMouseSleep: {
+    args: [FFIType.int],
+    returns: FFIType.void
+  },
+  ScrollMouse: {
+    args: [FFIType.int, FFIType.ptr],
+    returns: FFIType.void
+  },
   Move: {
     args: [FFIType.int, FFIType.int],
     returns: FFIType.void
@@ -64,6 +73,13 @@ export function getScaleSize(): Coords {
 }
 
 // Mouse
+export function setMouseSleep(millisecond: number) {
+  symbols.SetMouseSleep(millisecond)
+}
+
+export function scrollMouse(x: number, direction?: 'up' | 'down' | 'left' | 'right') {
+  symbols.ScrollMouse(x, ptr(encode(direction)))
+}
 
 export function move(x: number, y: number) {
   symbols.Move(x, y)
