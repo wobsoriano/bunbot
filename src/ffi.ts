@@ -20,6 +20,10 @@ const { symbols } = dlopen(`${import.meta.dir}/../release/bunbot.${suffix}`, {
     args: [],
     returns: FFIType.ptr
   },
+  GetScaleSize: {
+    args: [],
+    returns: FFIType.ptr
+  },
   FreeString: {
     args: [FFIType.ptr],
     returns: FFIType.void
@@ -42,5 +46,10 @@ export function getMouseColor(): string {
 
 export function getScreenSize(): Coords {
   const ptr = symbols.GetScreenSize()
+  return JSON.parse(toString(ptr))
+}
+
+export function getScaleSize(): Coords {
+  const ptr = symbols.GetScaleSize()
   return JSON.parse(toString(ptr))
 }

@@ -114,4 +114,14 @@ func GetScreenSize() *C.char {
 	return ch(string(coords))
 }
 
+//export GetScaleSize
+func GetScaleSize() *C.char {
+	x, y := robotgo.GetScaleSize()
+	coords, _ := json.Marshal(&Coords{
+		X: x,
+		Y: y,
+	})
+	return ch(string(coords))
+}
+
 func main() {} // Required but ignored
