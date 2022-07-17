@@ -1,5 +1,7 @@
 # bunbot
 
+WIP!
+
 Native cross-platform GUI automation for the Bun runtime.
 
 ## Install
