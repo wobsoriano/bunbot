@@ -1,8 +1,7 @@
 name: build
 
 on:
-  push:
-  pull_request:
+  workflow_dispatch
 
 jobs:
   xgo:
@@ -24,5 +23,5 @@ jobs:
           x: false
           race: false
           ldflags: -s -w
-          buildmode: default
+          buildmode: c-shared
           trimpath: true
