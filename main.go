@@ -39,12 +39,18 @@ typedef struct { int x; int y; int w; int h; } GetBoundsReturn;
 import "C"
 
 import (
+	"encoding/json"
 	"fmt"
 	"strings"
 	"unsafe"
 
 	"github.com/go-vgo/robotgo"
 )
+
+type ResultAndError struct {
+	Result string `json:"result"`
+	Error  string `json:"error"`
+}
 
 func ch(str string) *C.char {
 	return C.CString(str)
@@ -88,6 +94,14 @@ func toResultAndError(result string, err error) *C.ResultAndError {
 	data.error = ech(err)
 
 	return data
+}
+
+func createResultAndErrorJsonString(result string, err error) *C.char {
+	data, _ := json.Marshal(&ResultAndError{
+		Result: result,
+		Error:  sf(err),
+	})
+	return ch(string(data))
 }
 
 //export FreeString
@@ -138,9 +152,19 @@ func GetMouseColor() *C.char {
 	return ch(s)
 }
 
+type Coords struct {
+	X int `json:"x"`
+	Y int `json:"y"`
+}
+
 //export GetScreenSize
-func GetScreenSize() *C.Point {
-	return toPoint(robotgo.GetScreenSize())
+func GetScreenSize() *C.char {
+	x, y := robotgo.GetScreenSize()
+	coords, _ := json.Marshal(&Coords{
+		X: x,
+		Y: y,
+	})
+	return ch(string(coords))
 }
 
 //export GetScaleSize
