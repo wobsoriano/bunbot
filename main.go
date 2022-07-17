@@ -133,9 +133,18 @@ func GetScaleSize() *C.char {
 |__|  |__|  \______/   \______/  |_______/    |_______|
 */
 
+//export SetMouseSleep
+func SetMouseSleep(millisecond int) {
+	robotgo.MouseSleep = millisecond
+}
+
+//export ScrollMouse
+func ScrollMouse(x int, direction string) {
+	robotgo.ScrollMouse(x, direction)
+}
+
 //export Move
 func Move(x, y int) {
-	robotgo.MouseSleep = 100
 	robotgo.Move(x, y)
 }
 
