@@ -1,10 +1,10 @@
-import { dlopen, FFIType, suffix, ptr as toPtr, CString } from 'bun:ffi'
+import { dlopen, FFIType, suffix, CString } from 'bun:ffi'
 
-const utf8e = new TextEncoder()
+// const utf8e = new TextEncoder()
 
-function encode<T>(data: T): Uint8Array {
-  return utf8e.encode(data + "\0")
-}
+// function encode<T>(data: T): Uint8Array {
+//   return utf8e.encode(data + "\0")
+// }
 
 export type Signal = {
   signal: 'CtrlC' | 'CtrlD' | null
@@ -12,8 +12,8 @@ export type Signal = {
 }
 
 const { symbols } = dlopen(`${import.meta.dir}/../release/bunbot.${suffix}`, {
-  Readline: {
-    args: [FFIType.ptr],
+  GetVersion: {
+    args: [],
     returns: FFIType.ptr
   },
   FreeString: {
@@ -26,28 +26,9 @@ export function freeString(ptr: number) {
   symbols.FreeString(ptr)
 }
 
-export function readline(prompt = ''): Signal {
-  const data = toPtr(encode(prompt))
-  const ptr = symbols.Readline(data)
+export function getVersion(): string {
+  const ptr = symbols.GetVersion()
   const str = new CString(ptr)
   freeString(str.ptr)
-  const json = JSON.parse(str.toString())
-  if (json.error === "Interrupt") {
-    return {
-      signal: 'CtrlC',
-      value: null,
-    }
-  }
-
-  if (json.error === "EOF") {
-    return {
-      signal: 'CtrlD',
-      value: null,
-    }
-  }
-
-  return {
-    signal: null,
-    value: json.line
-  }
+  return str.toString()
 }

@@ -1,12 +1,6 @@
-import { describe, it, expect } from 'bun:test'
-import { one, two } from '../src'
+import { test, expect } from 'bun:test'
+import { getVersion } from '../src'
 
-describe('should', () => {
-  it('export 1', () => {
-    expect(one).toBe(1)
-  })
-
-  it('export 2', () => {
-    expect(two).toBe(2)
-  })
+test('getVersion', () => {
+  expect(getVersion()).toBe("v1.00.0.1189, MT. Baker!")
 })

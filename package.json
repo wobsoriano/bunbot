@@ -20,7 +20,8 @@
     "test": "bun wiptest"
   },
   "files": [
-    "dist"
+    "dist",
+    "release"
   ],
   "keywords": [
     "bun"
