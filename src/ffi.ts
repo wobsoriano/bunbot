@@ -16,6 +16,11 @@ const { symbols } = dlopen(`${import.meta.dir}/../release/bunbot.${suffix}`, {
     args: [],
     returns: FFIType.ptr
   },
+  // Screen
+  GetMouseColor: {
+    args: [],
+    returns: FFIType.ptr
+  },
   FreeString: {
     args: [FFIType.ptr],
     returns: FFIType.void
@@ -28,6 +33,13 @@ export function freeString(ptr: number) {
 
 export function getVersion(): string {
   const ptr = symbols.GetVersion()
+  const str = new CString(ptr)
+  freeString(str.ptr)
+  return str.toString()
+}
+
+export function getMouseColor(): string {
+  const ptr = symbols.GetMouseColor()
   const str = new CString(ptr)
   freeString(str.ptr)
   return str.toString()
