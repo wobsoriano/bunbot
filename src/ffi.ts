@@ -24,6 +24,11 @@ const { symbols } = dlopen(`${import.meta.dir}/../release/bunbot.${suffix}`, {
     args: [],
     returns: FFIType.ptr
   },
+  // Mouse
+  Move: {
+    args: [FFIType.int, FFIType.int],
+    returns: FFIType.void
+  },
   FreeString: {
     args: [FFIType.ptr],
     returns: FFIType.void
@@ -52,4 +57,10 @@ export function getScreenSize(): Coords {
 export function getScaleSize(): Coords {
   const ptr = symbols.GetScaleSize()
   return JSON.parse(toString(ptr))
+}
+
+// Mouse
+
+export function move(x: number, y: number) {
+  symbols.Move(x, y)
 }

@@ -124,4 +124,23 @@ func GetScaleSize() *C.char {
 	return ch(string(coords))
 }
 
+/*
+.___  ___.   ______    __    __       _______. _______
+|   \/   |  /  __  \  |  |  |  |     /       ||   ____|
+|  \  /  | |  |  |  | |  |  |  |    |   (----`|  |__
+|  |\/|  | |  |  |  | |  |  |  |     \   \    |   __|
+|  |  |  | |  `--'  | |  `--'  | .----)   |   |  |____
+|__|  |__|  \______/   \______/  |_______/    |_______|
+*/
+
+//export Move
+func Move(x, y int) {
+	robotgo.Move(x, y)
+}
+
+//export DragSmooth
+func DragSmooth(x, y int, args *C.char) {
+	robotgo.DragSmooth(x, y, str(args))
+}
+
 func main() {} // Required but ignored
