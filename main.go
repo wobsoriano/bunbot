@@ -135,12 +135,18 @@ func GetScaleSize() *C.char {
 
 //export Move
 func Move(x, y int) {
+	robotgo.MouseSleep = 100
 	robotgo.Move(x, y)
 }
 
 //export DragSmooth
 func DragSmooth(x, y int, args *C.char) {
 	robotgo.DragSmooth(x, y, str(args))
+}
+
+//export MoveSmooth
+func MoveSmooth(x, y int, low, high float64) bool {
+	return robotgo.MoveSmooth(x, y, low, high)
 }
 
 func main() {} // Required but ignored

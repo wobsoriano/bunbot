@@ -29,6 +29,10 @@ const { symbols } = dlopen(`${import.meta.dir}/../release/bunbot.${suffix}`, {
     args: [FFIType.int, FFIType.int],
     returns: FFIType.void
   },
+  MoveSmooth: {
+    args: [FFIType.int, FFIType.int, FFIType.f64, FFIType.f64],
+    returns: FFIType.bool
+  },
   FreeString: {
     args: [FFIType.ptr],
     returns: FFIType.void
@@ -63,4 +67,8 @@ export function getScaleSize(): Coords {
 
 export function move(x: number, y: number) {
   symbols.Move(x, y)
+}
+
+export function moveSmooth(x: number, y: number) {
+  symbols.MoveSmooth(x, y)
 }

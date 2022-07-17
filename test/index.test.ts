@@ -4,7 +4,8 @@ import {
   getMouseColor,
   getScreenSize,
   getScaleSize,
-  move
+  move,
+  moveSmooth
 } from '../src'
 
 test('getVersion', () => {
@@ -27,6 +28,10 @@ describe('Screen functions', () => {
 
 describe('Mouse functions', () => {
   test('move', () => {
-    move(100, 100)
+    // move(500, 500)
+  })
+
+  test('moveSmooth', () => {
+    // moveSmooth(100, 100)
   })
 })
