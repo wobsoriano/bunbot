@@ -13,10 +13,13 @@ bun add bunbot
 ## Usage
 
 ```ts
-import { scrollMouse } from 'bunbot'
+import { scrollMouse, getScreenSize } from 'bunbot'
 
 scrollMouse(10, 'up')
 scrollMouse(20, 'right')
+
+console.log(getScreenSize())
+// { x: 1920, y: 1080 }
 ```
 
 ## License
