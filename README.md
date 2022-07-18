@@ -33,6 +33,17 @@ bb.moveMouseSmooth(200, 400)
 bb.scrollMouse(100, 200)
 ```
 
+### Keyboard
+
+```ts
+import Bunbot from 'bunbot'
+
+const bb = new Bunbot()
+
+// Type a string
+bb.type('Hello world!')
+```
+
 ### Screen
 
 ```ts
