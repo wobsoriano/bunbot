@@ -24,7 +24,12 @@
     "release"
   ],
   "keywords": [
-    "bun"
+    "bun",
+    "robot",
+    "automation",
+    "bunjs",
+    "javascript",
+    "autopilot"
   ],
   "license": "MIT",
   "homepage": "https://github.com/wobsoriano/pkg-name#readme",
