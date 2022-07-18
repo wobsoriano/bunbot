@@ -182,4 +182,19 @@ func TypeStr(c *C.char) {
 	robotgo.TypeStr(str(c))
 }
 
+//export KeyTap
+func KeyTap(key *C.char, vals *C.char) *C.char {
+	arr := strings.Split(str(vals), ",")
+	args := make([]interface{}, len(arr))
+	for i, s := range arr {
+		args[i] = s
+	}
+	err := robotgo.KeyTap(str(key), args...)
+	if err != nil {
+		return ech(err)
+	}
+
+	return ch("")
+}
+
 func main() {} // Required but ignored

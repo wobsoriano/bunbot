@@ -5,7 +5,7 @@ import {
 const bb = new Bunbot()
 
 setTimeout(() => {
-  const result = bb.moveMouseSmooth(100, 100)
+  bb.tap("i", "alt", "command")
 
-console.log(result)
+// console.log(result)
 }, 2000);

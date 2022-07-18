@@ -74,6 +74,16 @@ export class Bunbot {
   type(text: string) {
     symbols.TypeStr(toPtr(encode(text)))
   }
+
+  /**
+   * @param {string} key Key
+   * @param {string} modifiers Modifiers
+   */
+   tap(key: string, ...modifiers: string[]) {
+    const keyPtr = toPtr(encode(key))
+    const modifiersPtr = toPtr(encode(modifiers))
+    symbols.KeyTap(keyPtr, modifiersPtr)
+  }
 }
 
 export default Bunbot

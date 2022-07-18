@@ -49,6 +49,10 @@ export const { symbols } = dlopen(location, {
     args: [FFIType.ptr],
     returns: FFIType.void
   },
+  KeyTap: {
+    args: [FFIType.ptr, FFIType.ptr],
+    returns: FFIType.ptr
+  },
   FreeString: {
     args: [FFIType.ptr],
     returns: FFIType.void
