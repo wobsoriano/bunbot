@@ -23,8 +23,12 @@ const bb = new Bunbot()
 bb.click()
 // Get mouse position coordinates
 const mousePosition = bb.getMousePosition()
+// Set default mouse sleep time in millis
+bb.setMouseSleep(100)
 // Move mouse
 bb.moveMouse(200, 400)
+// Move mouse smoothly
+bb.moveMouseSmooth(200, 400)
 // Scroll mouse
 bb.scrollMouse(100, 200)
 ```
