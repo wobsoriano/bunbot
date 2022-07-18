@@ -1,6 +1,6 @@
 # bunbot
 
-Native cross-platform GUI automation for the Bun runtime. WIP!
+Native cross-platform GUI automation for the Bun runtime. Supports Mac and Windows for now.
 
 ## Requirements
 
