@@ -1,8 +1,6 @@
 # bunbot
 
-WIP!
-
-Native cross-platform GUI automation for the Bun runtime.
+Native cross-platform GUI automation for the Bun runtime. WIP!
 
 ## Install
 
@@ -13,13 +11,16 @@ bun add bunbot
 ## Usage
 
 ```ts
-import { scrollMouse, getScreenSize } from 'bunbot'
+import Bunbot from 'bunbot'
 
-scrollMouse(10, 'up')
-scrollMouse(20, 'right')
+const bb = new Bunbot()
 
-console.log(getScreenSize())
-// { x: 1920, y: 1080 }
+// Mouse
+
+
+// Screen
+// Get screen size
+const screenSize = bb.getScreenSize()
 ```
 
 ## License
