@@ -5,8 +5,8 @@ CXX=~/go/bin/zigcpp
 CGO_ENABLED=1
 FILENAME=main.go
 
-CGO_ENABLED=$CGO_ENABLED GOOS=darwin GOARCH=amd64 CC=$CC CXX=$CXX go build --buildmode c-shared -o ./release/darwin-amd64 -ldflags "-s -w" $FILENAME
 CGO_ENABLED=$CGO_ENABLED GOOS=darwin GOARCH=arm64 CC=$CC CXX=$CXX go build --buildmode c-shared -o ./release/darwin-arm64 -ldflags "-s -w" $FILENAME
-CGO_ENABLED=$CGO_ENABLED GOOS=windows GOARCH=amd64 CC=$CC CXX=$CXX go build --buildmode c-shared -o ./release/win32-amd64 -ldflags "-s -w -H=windowsgui" $FILENAME
-CGO_ENABLED=$CGO_ENABLED GOOS=linux GOARCH=amd64 CC=$CC CXX=$CXX go build --buildmode c-shared -o ./release/linux-amd64 -ldflags "-s -w" $FILENAME
-CGO_ENABLED=$CGO_ENABLED GOOS=linux GOARCH=arm64 CC=$CC CXX=$CXX go build --buildmode c-shared -o ./release/linux-arm64 -ldflags "-s -w" $FILENAME
+# CGO_ENABLED=$CGO_ENABLED GOOS=darwin GOARCH=amd64 CC=$CC CXX=$CXX go build --buildmode c-shared -o ./release/darwin-amd64 -ldflags "-s -w" $FILENAME
+# CGO_ENABLED=$CGO_ENABLED GOOS=windows GOARCH=amd64 CC=$CC CXX=$CXX go build --buildmode c-shared -o ./release/win32-amd64 -ldflags "-s -w -H=windowsgui" $FILENAME
+# CGO_ENABLED=$CGO_ENABLED GOOS=linux GOARCH=amd64 CC=$CC CXX=$CXX go build --buildmode c-shared -o ./release/linux-amd64 -ldflags "-s -w" $FILENAME
+# CGO_ENABLED=$CGO_ENABLED GOOS=linux GOARCH=arm64 CC=$CC CXX=$CXX go build --buildmode c-shared -o ./release/linux-arm64 -ldflags "-s -w" $FILENAME

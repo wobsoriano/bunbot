@@ -1,5 +1,5 @@
 import { CString } from 'bun:ffi'
-import { freeString } from './ffi'
+import { symbols } from './ffi'
 
 const utf8e = new TextEncoder()
 
@@ -9,6 +9,6 @@ export function encode<T>(data: T): Uint8Array {
 
 export function toString(ptr: any): string {
   const str = new CString(ptr)
-  freeString(str.ptr)
+  symbols.FreeString(str.ptr)
   return str.toString()
 }

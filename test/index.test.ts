@@ -36,7 +36,7 @@ describe('Mouse functions', () => {
   })
 
   test('moveSmooth', () => {
-    // moveSmooth(100, 100)
+    move(200, 400)
   })
 
   test('scrollMouse', () => {

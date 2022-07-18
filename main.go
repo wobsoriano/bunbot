@@ -139,8 +139,8 @@ func SetMouseSleep(millisecond int) {
 }
 
 //export ScrollMouse
-func ScrollMouse(x int, direction string) {
-	robotgo.ScrollMouse(x, direction)
+func ScrollMouse(x, y int) {
+	robotgo.Scroll(x, y)
 }
 
 //export Move
@@ -148,18 +148,24 @@ func Move(x, y int) {
 	robotgo.Move(x, y)
 }
 
-//export DragSmooth
-func DragSmooth(x, y int, args *C.char) {
-	robotgo.DragSmooth(x, y, str(args))
-}
-
 //export MoveSmooth
 func MoveSmooth(x, y int, low, high float64) bool {
 	return robotgo.MoveSmooth(x, y, low, high)
 }
 
-func main() {
-	SetMouseSleep(100)
-	robotgo.ScrollMouse(10, "up")
-	robotgo.ScrollMouse(10, "down")
-} // Required but ignored
+//export GetMousePos
+func GetMousePos() *C.char {
+	x, y := robotgo.GetMousePos()
+	coords, _ := json.Marshal(&Coords{
+		X: x,
+		Y: y,
+	})
+	return ch(string(coords))
+}
+
+//export Click
+func Click(btn *C.char, doublec bool) {
+	robotgo.Click(str(btn), doublec)
+}
+
+func main() {} // Required but ignored

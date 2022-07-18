@@ -1,13 +1,7 @@
-import { dlopen, FFIType, ptr } from 'bun:ffi'
-import { toString, encode } from './utils'
-
-export type Coords = {
-  x: number
-  y: number
-}
+import { dlopen, FFIType } from 'bun:ffi'
 
 const location = new URL(`../release/${process.platform}-${process.arch}`, import.meta.url).pathname
-const { symbols } = dlopen(location, {
+export const { symbols } = dlopen(location, {
   GetVersion: {
     args: [],
     returns: FFIType.ptr
@@ -31,7 +25,7 @@ const { symbols } = dlopen(location, {
     returns: FFIType.void
   },
   ScrollMouse: {
-    args: [FFIType.int, FFIType.ptr],
+    args: [FFIType.int, FFIType.int],
     returns: FFIType.void
   },
   Move: {
@@ -42,49 +36,16 @@ const { symbols } = dlopen(location, {
     args: [FFIType.int, FFIType.int, FFIType.f64, FFIType.f64],
     returns: FFIType.bool
   },
+  GetMousePos: {
+    args: [],
+    returns: FFIType.ptr
+  },
+  Click: {
+    args: [FFIType.ptr, FFIType.bool],
+    returns: FFIType.void
+  },
   FreeString: {
     args: [FFIType.ptr],
     returns: FFIType.void
   }
 })
-
-export function freeString(ptr: number) {
-  symbols.FreeString(ptr)
-}
-
-export function getVersion(): string {
-  const ptr = symbols.GetVersion()
-  return toString(ptr)
-}
-
-export function getMouseColor(): string {
-  const ptr = symbols.GetMouseColor()
-  return toString(ptr)
-}
-
-export function getScreenSize(): Coords {
-  const ptr = symbols.GetScreenSize()
-  return JSON.parse(toString(ptr))
-}
-
-export function getScaleSize(): Coords {
-  const ptr = symbols.GetScaleSize()
-  return JSON.parse(toString(ptr))
-}
-
-// Mouse
-export function setMouseSleep(millisecond: number) {
-  symbols.SetMouseSleep(millisecond)
-}
-
-export function scrollMouse(x: number, direction?: 'up' | 'down' | 'left' | 'right') {
-  symbols.ScrollMouse(x, ptr(encode(direction)))
-}
-
-export function move(x: number, y: number) {
-  symbols.Move(x, y)
-}
-
-export function moveSmooth(x: number, y: number) {
-  symbols.MoveSmooth(x, y)
-}
