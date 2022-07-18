@@ -5,7 +5,7 @@ import {
 const bb = new Bunbot()
 
 setTimeout(() => {
-  const result = bb.type("hello world")
+  const result = bb.moveMouseSmooth(100, 100)
 
 console.log(result)
 }, 2000);
