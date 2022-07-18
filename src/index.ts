@@ -5,7 +5,7 @@ import { toString, encode } from './utils'
 
 export class Bunbot {
   constructor() {}
-  
+
   freeString(ptr: number) {
     symbols.FreeString(ptr)
   }
@@ -64,6 +64,15 @@ export class Bunbot {
    */
   click(button: 'right' | 'left' | 'wheelLeft' = 'left', doubleClick = false) {
     symbols.Click(toPtr(encode(button)), Number(doubleClick))
+  }
+
+  // Keyboard
+
+  /**
+   * @param {string} text Text to type
+   */
+  type(text: string) {
+    symbols.TypeStr(toPtr(encode(text)))
   }
 }
 

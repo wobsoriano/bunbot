@@ -5,7 +5,7 @@ import {
 const bb = new Bunbot()
 
 setTimeout(() => {
-  const result = bb.click('left', true)
+  const result = bb.type("hello world")
 
 console.log(result)
 }, 2000);
