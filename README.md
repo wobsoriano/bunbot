@@ -41,7 +41,7 @@ const bb = new Bunbot()
 // Type a string
 bb.type('Hello world!')
 // Tap a key
-bb.type('i', 'alt', 'command')
+bb.tap('i', 'alt', 'command')
 ```
 
 ### Screen
