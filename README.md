@@ -1,6 +1,6 @@
 # bunbot
 
-[<img src="https://i.imgur.com/iQgEyms.jpg" title="Generated using Craiyon, formerly DALL-E mini" align="right" width="100">]([https://deno.land](https://www.craiyon.com/))
+[<img src="https://i.imgur.com/iQgEyms.jpg" title="Generated using Craiyon, formerly DALL-E mini" align="right" width="120">]([https://deno.land](https://www.craiyon.com/))
 
 Native cross-platform GUI automation for the Bun runtime. Supports Mac and Windows for now.
 
