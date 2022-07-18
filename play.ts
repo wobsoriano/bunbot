@@ -1,19 +1,13 @@
-import {
-  Bunbot
-} from './src'
+import { Bunbot } from './src'
 
 const bb = new Bunbot()
 
-bb.setMouseSleep(2)
+const mousePos = bb.getMousePosition()
+bb.type(`Mouse coords: ${JSON.stringify(mousePos)}`)
+bb.tap('enter')
+const screenSize = bb.getScreenSize()
+bb.type(`Screen size: ${JSON.stringify(screenSize)}`)
 
-const twoPI = Math.PI * 2.0;
-const screenSize = bb.getScreenSize();
-const height = (screenSize.x / 2) - 10;
-const width = screenSize.y;
-
-for (let x = 0; x < width; x++)
-{
-	const y = height * Math.sin((twoPI * x) / width) + height;
-	bb.moveMouse(x, y);
-}
-
+setTimeout(() => {
+	console.log(123)
+}, 4000)

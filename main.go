@@ -74,7 +74,6 @@ func toStr(arr interface{}) string {
 
 //export FreeString
 func FreeString(str *C.char) {
-	fmt.Printf("freeing %v... \n", str)
 	C.free(unsafe.Pointer(str))
 }
 
