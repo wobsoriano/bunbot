@@ -61,6 +61,8 @@ const color = bb.getMousePositionColor()
 const scaleSize = bb.getScaleSize()
 ```
 
+More functions to come...
+
 ## Development
 
 [View instructions](/Development.md)
