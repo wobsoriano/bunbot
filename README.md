@@ -2,6 +2,13 @@
 
 [![npm (tag)](https://img.shields.io/npm/v/bunbot?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/bunbot) ![NPM](https://img.shields.io/npm/l/bunbot?style=flat&colorA=000000&colorB=000000)
 
+<p align="center">
+  <img src="https://i.imgur.com/iQgEyms.jpg">
+</p>
+<p align="center">
+  Generated using <a href="https://www.craiyon.com">Craiyon</a>.
+</p>
+
 Native cross-platform GUI automation for the Bun runtime. Supports Mac and Windows for now.
 
 ## Requirements
