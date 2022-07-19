@@ -2,7 +2,7 @@
 
 [<img src="https://i.imgur.com/iQgEyms.jpg" title="Generated using Craiyon, formerly DALL-E mini" align="right" width="120">]([https://deno.land](https://www.craiyon.com/))
 
-Native cross-platform GUI automation for the Bun runtime. Supports Mac and Windows for now.
+Native cross-platform GUI automation for the Bun runtime.
 
 [![npm (tag)](https://img.shields.io/npm/v/bunbot?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/bunbot) ![NPM](https://img.shields.io/npm/l/bunbot?style=flat&colorA=000000&colorB=000000)
 
@@ -63,7 +63,7 @@ const color = bb.getMousePositionColor()
 const scaleSize = bb.getScaleSize()
 ```
 
-More functions to come...
+Tested only in Mac. More functions to come...
 
 ## Development
 
