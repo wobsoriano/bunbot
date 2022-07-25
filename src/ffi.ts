@@ -1,6 +1,17 @@
-import { dlopen, FFIType } from 'bun:ffi'
+import { dlopen, FFIType, suffix } from 'bun:ffi'
 
-const location = new URL(`../release/${process.platform}-${process.arch}`, import.meta.url).pathname
+const { platform, arch } = process
+
+let filename: string
+
+if (arch === 'x64') {
+  filename = `../release/readline-${platform}-amd64.${suffix}`
+} else {
+  filename = `../release/readline-${platform}-${arch}.${suffix}`
+}
+
+const location = new URL(filename, import.meta.url).pathname
+
 export const { symbols } = dlopen(location, {
   GetVersion: {
     args: [],
