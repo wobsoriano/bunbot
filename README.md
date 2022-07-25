@@ -63,12 +63,6 @@ const color = bb.getMousePositionColor()
 const scaleSize = bb.getScaleSize()
 ```
 
-Tested only in Mac. More functions to come...
-
-## Development
-
-[View instructions](/Development.md)
-
 ## License
 
 MIT
