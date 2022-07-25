@@ -2,7 +2,7 @@
 
 [<img src="https://i.imgur.com/iQgEyms.jpg" title="Generated using Craiyon, formerly DALL-E mini" align="right" width="120">]([https://deno.land](https://www.craiyon.com/))
 
-Desktop automation for the Bun runtime.
+Desktop automation for the Bun runtime. Currently works on Mac.
 
 [![npm (tag)](https://img.shields.io/npm/v/bunbot?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/bunbot) ![NPM](https://img.shields.io/npm/l/bunbot?style=flat&colorA=000000&colorB=000000)
 
