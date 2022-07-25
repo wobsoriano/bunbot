@@ -11,7 +11,7 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "description": "Native cross-platform GUI automation for Bun.",
+  "description": "Desktop automation for Bun.",
   "scripts": {
     "build": "tsup",
     "build:go": "./build.sh",
