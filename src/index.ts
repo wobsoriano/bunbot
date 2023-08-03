@@ -49,8 +49,8 @@ export class Bunbot {
     symbols.Move(x, y)
   }
 
-  moveMouseSmooth(x: number, y: number) {
-    symbols.MoveSmooth(x, y)
+  moveMouseSmooth(x: number, y: number, low = 0, high = 0) {
+    symbols.MoveSmooth(x, y, high, low)
   }
 
   getMousePosition(): Coords {
@@ -63,7 +63,7 @@ export class Bunbot {
    * @param {boolean} doubleClick Should double click 
    */
   click(button: 'right' | 'left' | 'wheelLeft' = 'left', doubleClick = false) {
-    symbols.Click(toPtr(encode(button)), Number(doubleClick))
+    symbols.Click(toPtr(encode(button)), doubleClick)
   }
 
   // Keyboard
