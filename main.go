@@ -92,12 +92,6 @@ func GetVersion() *C.char {
 |_______/     \______|| _| `._____||_______||_______||__| \__|
 */
 
-//export GetMouseColor
-func GetMouseColor() *C.char {
-	s := robotgo.GetMouseColor()
-	return ch(s)
-}
-
 type Coords struct {
 	X int `json:"x"`
 	Y int `json:"y"`

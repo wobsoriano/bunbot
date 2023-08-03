@@ -57,8 +57,6 @@ const bb = new Bunbot()
 
 // Get screen size
 const screenSize = bb.getScreenSize()
-// Get mouse pos's color
-const color = bb.getMousePositionColor()
 // Get scale size
 const scaleSize = bb.getScaleSize()
 ```

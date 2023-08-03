@@ -17,11 +17,6 @@ export class Bunbot {
 
   // Screen
 
-  getMousePositionColor(): string {
-    const ptr = symbols.GetMouseColor()
-    return toString(ptr)
-  }
-
   getScreenSize(): Coords {
     const ptr = symbols.GetScreenSize()
     return JSON.parse(toString(ptr))
