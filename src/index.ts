@@ -17,6 +17,11 @@ export class Bunbot {
 
   // Screen
 
+  getPixelColor(x: number, y: number): string {
+    const ptr = symbols.GetPixelColor(x, y)
+    return toString(ptr)
+  }
+
   getScreenSize(): Coords {
     const ptr = symbols.GetScreenSize()
     return JSON.parse(toString(ptr))

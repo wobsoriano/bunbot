@@ -18,6 +18,10 @@ export const { symbols } = dlopen(location, {
     returns: FFIType.ptr
   },
   // Screen
+  GetPixelColor: {
+    args: [FFIType.int, FFIType.int],
+    returns: FFIType.ptr
+  },
   GetScreenSize: {
     args: [],
     returns: FFIType.ptr

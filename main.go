@@ -97,6 +97,12 @@ type Coords struct {
 	Y int `json:"y"`
 }
 
+//export GetPixelColor
+func GetPixelColor(x, y int) *C.char {
+	s := robotgo.GetPixelColor(x, y)
+	return ch(s)
+}
+
 //export GetScreenSize
 func GetScreenSize() *C.char {
 	x, y := robotgo.GetScreenSize()
