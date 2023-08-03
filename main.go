@@ -147,6 +147,11 @@ func Move(x, y int) {
 	robotgo.Move(x, y)
 }
 
+//export Drag
+func Drag(x, y int) {
+	robotgo.DragSmooth(x, y)
+}
+
 //export MoveSmooth
 func MoveSmooth(x, y int, low, high float64) bool {
 	return robotgo.MoveSmooth(x, y, low, high)
