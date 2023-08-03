@@ -1,6 +1,6 @@
 {
   "name": "bunbot",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "Desktop automation for Bun.",
@@ -35,6 +35,6 @@
     "bumpp": "^9.1.1",
     "bun-types": "^0.7.1",
     "typescript": "^5.1.6",
-    "bun-plugin-dts":"^0.1.0"
+    "bun-plugin-dts": "^0.1.0"
   }
 }
