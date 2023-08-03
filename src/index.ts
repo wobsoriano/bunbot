@@ -79,6 +79,20 @@ export class Bunbot {
     const modifiersPtr = toPtr(encode(modifiers))
     symbols.KeyTap(keyPtr, modifiersPtr)
   }
+
+  getText(imagePath: string) {
+    const ptr = symbols.GetText(toPtr(encode(imagePath)))
+    const { result, error } = JSON.parse(toString(ptr)) as {
+      result: string,
+      error: string
+    }
+    
+    if (error !== '') {
+      throw new Error(error)
+    }
+
+    return result
+  }
 }
 
 export default Bunbot

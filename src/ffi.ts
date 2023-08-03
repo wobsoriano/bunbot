@@ -60,6 +60,10 @@ export const { symbols } = dlopen(location, {
     args: [FFIType.ptr, FFIType.ptr],
     returns: FFIType.ptr
   },
+  GetText: {
+    args: [FFIType.ptr],
+    returns: FFIType.ptr
+  },
   FreeString: {
     args: [FFIType.ptr],
     returns: FFIType.void

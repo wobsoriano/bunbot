@@ -190,4 +190,15 @@ func KeyTap(key *C.char, vals *C.char) *C.char {
 	return ch("")
 }
 
+//export GetText
+func GetText(imgPath *C.char) *C.char {
+	result, err := robotgo.GetText(str(imgPath))
+
+	resultAndError, _ := json.Marshal(&ResultAndError{
+		Result: result,
+		Error:  sf(err),
+	})
+	return ch(string(resultAndError))
+}
+
 func main() {} // Required but ignored
