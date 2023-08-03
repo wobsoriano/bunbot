@@ -148,7 +148,7 @@ func MoveSmooth(x, y int, low, high float64) bool {
 
 //export GetMousePos
 func GetMousePos() *C.char {
-	x, y := robotgo.GetMousePos()
+	x, y := robotgo.Location()
 	coords, _ := json.Marshal(&Coords{
 		X: x,
 		Y: y,
