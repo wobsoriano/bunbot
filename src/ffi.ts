@@ -92,12 +92,31 @@ export const { symbols } = dlopen(location, {
     args: [FFIType.ptr, FFIType.ptr],
     returns: FFIType.ptr
   },
+  KeyToggle: {
+    args: [FFIType.ptr, FFIType.ptr],
+    returns: FFIType.ptr
+  },
+  WriteAll: {
+    args: [FFIType.ptr],
+    returns: FFIType.void
+  },
   GetText: {
     args: [FFIType.ptr],
     returns: FFIType.ptr
   },
+  ReadAll: {
+    returns: FFIType.ptr
+  },
   FreeString: {
     args: [FFIType.ptr],
+    returns: FFIType.void
+  },
+  Sleep: {
+    args: [FFIType.int],
+    returns: FFIType.void
+  },
+  SetKeySleep: {
+    args: [FFIType.int],
     returns: FFIType.void
   }
 })

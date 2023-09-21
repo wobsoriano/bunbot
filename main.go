@@ -216,6 +216,16 @@ func TypeStr(c *C.char) {
 	robotgo.TypeStr(str(c))
 }
 
+//export Sleep
+func Sleep(tm int) {
+	robotgo.Sleep(tm)
+}
+
+//export SetKeySleep
+func SetKeySleep(tm int) {
+	robotgo.KeySleep = tm
+}
+
 //export KeyTap
 func KeyTap(key *C.char, vals *C.char) *C.char {
 	arr := strings.Split(str(vals), ",")
@@ -229,6 +239,37 @@ func KeyTap(key *C.char, vals *C.char) *C.char {
 	}
 
 	return ch("")
+}
+
+//export KeyToggle
+func KeyToggle(key *C.char, vals *C.char) *C.char {
+	arr := strings.Split(str(vals), ",")
+	args := make([]interface{}, len(arr))
+	for i, s := range arr {
+		args[i] = s
+	}
+	err := robotgo.KeyToggle(str(key), args...)
+	if err != nil {
+		return ech(err)
+	}
+
+	return ch("")
+}
+
+//export WriteAll
+func WriteAll(text *C.char) {
+	robotgo.WriteAll(str(text))
+}
+
+//export ReadAll
+func ReadAll() *C.char {
+	result, err := robotgo.ReadAll()
+
+	resultAndError, _ := json.Marshal(&ResultAndError{
+		Result: result,
+		Error:  sf(err),
+	})
+	return ch(string(resultAndError))
 }
 
 //export GetText

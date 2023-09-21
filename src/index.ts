@@ -99,7 +99,7 @@ export class Bunbot {
   /**
    * @param {string} text Text to type
    */
-  type(text: string) {
+  typeStr(text: string) {
     symbols.TypeStr(toPtr(encode(text)))
   }
 
@@ -107,10 +107,45 @@ export class Bunbot {
    * @param {string} key Key
    * @param {string} modifiers Modifiers
    */
-   tap(key: string, ...modifiers: string[]) {
+   keyTap(key: string, ...modifiers: string[]) {
     const keyPtr = toPtr(encode(key))
     const modifiersPtr = toPtr(encode(modifiers))
     symbols.KeyTap(keyPtr, modifiersPtr)
+  }
+
+  /**
+   * @param {string} key Key
+   * @param {string} modifiers Modifiers
+   */
+   keyToggle(key: string, ...modifiers: string[]) {
+    const keyPtr = toPtr(encode(key))
+    const modifiersPtr = toPtr(encode(modifiers))
+    symbols.KeyToggle(keyPtr, modifiersPtr)
+  }
+
+  /**
+   * Write string to clipboard
+   */
+   writeAll(text: string) {
+    const textPtr = toPtr(encode(text))
+    symbols.WriteAll(textPtr)
+  }
+
+  /**
+   * Read string from clipboard.
+   */
+  readAll() {
+    const ptr = symbols.ReadAll()
+    const { result, error } = JSON.parse(toString(ptr)) as {
+      result: string,
+      error: string
+    }
+    
+    if (error !== '') {
+      throw new Error(error)
+    }
+    
+    return result
   }
 
   /**
@@ -130,6 +165,14 @@ export class Bunbot {
     }
 
     return result
+  }
+
+  sleep(tm: number) {
+    symbols.Sleep(tm)
+  }
+
+  setKeySleep(tm: number) {
+    symbols.Sleep(tm)
   }
 }
 
