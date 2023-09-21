@@ -19,9 +19,9 @@ bun add bunbot
 ### Mouse
 
 ```ts
-import Bunbot from 'bunbot'
+import { CreateBot } from 'bunbot'
 
-const bb = new Bunbot()
+const bb = CreateBot()
 
 // Click
 bb.click()

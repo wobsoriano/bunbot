@@ -13,5 +13,6 @@ setTimeout(() => {
 	// console.log(screenSize)
 	// bb.type(`Screen size: ${JSON.stringify(screenSize)}`)
 	// bb.type('Hello world')
-	bb.getText('./sample.webp')
+	const x = bb.getText('./sample.webp')
+	console.log(x)
 }, 2000)

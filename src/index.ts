@@ -104,4 +104,6 @@ export class Bunbot {
   }
 }
 
-export default Bunbot
+export function CreateBot() {
+  return new Bunbot()
+}
