@@ -31,6 +31,18 @@ export const { symbols } = dlopen(location, {
     returns: FFIType.ptr
   },
   // Mouse
+  Scroll: {
+    args: [FFIType.int, FFIType.int, FFIType.int],
+    returns: FFIType.void
+  },
+  MilliSleep: {
+    args: [FFIType.int],
+    returns: FFIType.void
+  },
+  ScrollSmooth: {
+    args: [FFIType.int, FFIType.int, FFIType.int, FFIType.int],
+    returns: FFIType.void
+  },
   SetMouseSleep: {
     args: [FFIType.int],
     returns: FFIType.void
@@ -40,6 +52,14 @@ export const { symbols } = dlopen(location, {
     returns: FFIType.void
   },
   Move: {
+    args: [FFIType.int, FFIType.int],
+    returns: FFIType.void
+  },
+  MoveRelative: {
+    args: [FFIType.int, FFIType.int],
+    returns: FFIType.void
+  },
+  DragSmooth: {
     args: [FFIType.int, FFIType.int],
     returns: FFIType.void
   },

@@ -132,6 +132,26 @@ func GetScaleSize() *C.char {
 |__|  |__|  \______/   \______/  |_______/    |_______|
 */
 
+//export ScrollDir
+func ScrollDir(x int, direction *C.char) {
+	robotgo.ScrollDir(x, str(direction))
+}
+
+//export Scroll
+func Scroll(x, y, msDelay int) {
+	robotgo.Scroll(x, y, msDelay)
+}
+
+//export MilliSleep
+func MilliSleep(tm int) {
+	robotgo.MilliSleep(tm)
+}
+
+//export ScrollSmooth
+func ScrollSmooth(toy, num, sleep, tox int) {
+	robotgo.ScrollSmooth(toy, num, sleep, tox)
+}
+
 //export SetMouseSleep
 func SetMouseSleep(millisecond int) {
 	robotgo.MouseSleep = millisecond
@@ -147,8 +167,13 @@ func Move(x, y int) {
 	robotgo.Move(x, y)
 }
 
-//export Drag
-func Drag(x, y int) {
+//export MoveRelative
+func MoveRelative(x, y int) {
+	robotgo.MoveRelative(x, y)
+}
+
+//export DragSmooth
+func DragSmooth(x, y int) {
 	robotgo.DragSmooth(x, y)
 }
 

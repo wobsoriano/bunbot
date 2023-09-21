@@ -34,6 +34,26 @@ export class Bunbot {
 
   // Mouse
 
+  scroll(x: number, y: number, msDelay = 10) {
+    symbols.Scroll(x, y, msDelay)
+  }
+
+  milliSleep(tm: number) {
+    symbols.MilliSleep(tm)
+  }
+
+  scrollSmooth(toy: number, num = 5, sleep = 100, tox = 0) {
+    symbols.ScrollSmooth(toy, num, sleep, tox)
+  }
+
+  moveRelative(x: number, y: number) {
+    symbols.MoveRelative(x, y)
+  }
+
+  dragSmooth(x: number, y: number) {
+    symbols.DragSmooth(x, y)
+  }
+
   /**
    * @param {number} millisecond Default mouse sleep time
    */
