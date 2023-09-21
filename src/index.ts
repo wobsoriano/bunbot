@@ -77,6 +77,10 @@ export class Bunbot {
     symbols.MoveSmooth(x, y, high, low)
   }
 
+  toggle(key: string, direction = 'down') {
+    symbols.Toggle(toPtr(encode(key)), toPtr(encode(direction)))
+  }
+
   getMousePosition(): Coords {
     const ptr = symbols.GetMousePos()
     return JSON.parse(toString(ptr)) 

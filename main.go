@@ -182,6 +182,11 @@ func MoveSmooth(x, y int, low, high float64) bool {
 	return robotgo.MoveSmooth(x, y, low, high)
 }
 
+//export Toggle
+func Toggle(key, direction *C.char) {
+	robotgo.Toggle(str(key), str(direction))
+}
+
 //export GetMousePos
 func GetMousePos() *C.char {
 	x, y := robotgo.Location()
