@@ -5,9 +5,9 @@ const { platform, arch } = process
 let filename: string
 
 if (arch === 'x64') {
-  filename = `../release/readline-${platform}-amd64.${suffix}`
+  filename = `../release/bunbot-${platform}-amd64.${suffix}`
 } else {
-  filename = `../release/readline-${platform}-${arch}.${suffix}`
+  filename = `../release/bunbot-${platform}-${arch}.${suffix}`
 }
 
 const location = new URL(filename, import.meta.url).pathname

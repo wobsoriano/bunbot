@@ -6,7 +6,6 @@
   "description": "Desktop automation for Bun.",
   "scripts": {
     "build": "bun run ./build.mjs",
-    "build:go": "./build.sh",
     "release": "bumpp --commit --push --tag && npm publish",
     "prepublishOnly": "bun run build",
     "test": "bun test"
