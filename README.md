@@ -1,7 +1,5 @@
 # bunbot
 
-[<img src="https://i.imgur.com/iQgEyms.jpg" title="Generated using Craiyon, formerly DALL-E mini" align="right" width="120">]([https://deno.land](https://www.craiyon.com/))
-
 Desktop automation for the Bun runtime. Currently works on Mac.
 
 [![npm (tag)](https://img.shields.io/npm/v/bunbot?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/bunbot) ![NPM](https://img.shields.io/npm/l/bunbot?style=flat&colorA=000000&colorB=000000)
@@ -38,9 +36,9 @@ bb.scrollMouse(100, 200)
 ### Keyboard
 
 ```ts
-import Bunbot from 'bunbot'
+import { CreateBot } from 'bunbot'
 
-const bb = new Bunbot()
+const bb = CreateBot()
 
 // Type a string
 bb.type('Hello world!')
@@ -51,14 +49,25 @@ bb.tap('i', 'alt', 'command')
 ### Screen
 
 ```ts
-import Bunbot from 'bunbot'
+import { CreateBot } from 'bunbot'
 
-const bb = new Bunbot()
+const bb = CreateBot()
 
 // Get screen size
 const screenSize = bb.getScreenSize()
 // Get scale size
 const scaleSize = bb.getScaleSize()
+```
+
+### Other
+
+```ts
+import { CreateBot } from 'bunbot'
+
+const bb = CreateBot()
+
+// Get the image text using Tesseract OCR.
+const text = bb.getText()
 ```
 
 ## License

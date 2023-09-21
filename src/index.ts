@@ -89,6 +89,11 @@ export class Bunbot {
     symbols.KeyTap(keyPtr, modifiersPtr)
   }
 
+  /**
+   * Get the image text using Tesseract OCR.
+   * @param {string} imagePath 
+   * @returns {string}
+   */
   getText(imagePath: string) {
     const ptr = symbols.GetText(toPtr(encode(imagePath)))
     const { result, error } = JSON.parse(toString(ptr)) as {

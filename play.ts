@@ -1,6 +1,6 @@
-import { Bunbot } from './src'
+import { CreateBot } from './src'
 
-const bb = new Bunbot()
+const bb = CreateBot()
 
 setTimeout(() => {
 	console.log(123)
