@@ -81,8 +81,8 @@ export class Bunbot {
     symbols.Toggle(toPtr(encode(key)), toPtr(encode(direction)))
   }
 
-  getMousePosition(): Coords {
-    const ptr = symbols.GetMousePos()
+  Location(): Coords {
+    const ptr = symbols.Location()
     return JSON.parse(toString(ptr)) 
   }
 

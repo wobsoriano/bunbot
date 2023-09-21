@@ -75,7 +75,7 @@ export const { symbols } = dlopen(location, {
     args: [FFIType.ptr, FFIType.ptr],
     returns: FFIType.void
   },
-  GetMousePos: {
+  Location: {
     args: [],
     returns: FFIType.ptr
   },

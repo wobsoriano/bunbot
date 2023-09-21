@@ -85,10 +85,14 @@ import { CreateBot } from 'bunbot'
 
 const bb = CreateBot()
 
-// Get screen size
-const screenSize = bb.getScreenSize()
-// Get scale size
-const scaleSize = bb.getScaleSize()
+const { x, y } = bb.location()
+console.log('pos: ', x, y)
+
+const scaleSize = bb.getPixelColor(100, 200)
+console.log('color: ', color)
+
+const { x: sx, y: sy } = bb.getScreenSize()
+console.log('get screen size: ', sx, sy)
 ```
 
 ### Other

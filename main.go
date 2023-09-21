@@ -187,8 +187,8 @@ func Toggle(key, direction *C.char) {
 	robotgo.Toggle(str(key), str(direction))
 }
 
-//export GetMousePos
-func GetMousePos() *C.char {
+//export Location
+func Location() *C.char {
 	x, y := robotgo.Location()
 	coords, _ := json.Marshal(&Coords{
 		X: x,
