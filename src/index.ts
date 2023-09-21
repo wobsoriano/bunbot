@@ -86,7 +86,7 @@ export class Bunbot {
    * @param {string} button Button to click to 
    * @param {boolean} doubleClick Should double click 
    */
-  click(button: 'right' | 'left' | 'wheelLeft' = 'left', doubleClick = false) {
+  click(button: 'right' | 'left' | 'wheelLeft' | 'wheelRight' = 'left', doubleClick = false) {
     symbols.Click(toPtr(encode(button)), doubleClick)
   }
 
