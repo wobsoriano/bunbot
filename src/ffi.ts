@@ -63,10 +63,6 @@ export const { symbols } = dlopen(location, {
     args: [FFIType.int, FFIType.int],
     returns: FFIType.void
   },
-  Drag: {
-    args: [FFIType.int, FFIType.int],
-    returns: FFIType.void
-  },
   MoveSmooth: {
     args: [FFIType.int, FFIType.int, FFIType.f64, FFIType.f64],
     returns: FFIType.bool

@@ -69,10 +69,6 @@ export class Bunbot {
     symbols.Move(x, y)
   }
 
-  dragMouse(x: number, y: number) {
-    symbols.Drag(x, y)
-  }
-
   moveSmooth(x: number, y: number, low = 1.0, high = 3.0) {
     symbols.MoveSmooth(x, y, high, low)
   }
