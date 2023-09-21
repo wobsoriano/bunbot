@@ -34,6 +34,10 @@ export class Bunbot {
 
   // Mouse
 
+  scrollDir(x: number, direction = 'down') {
+    symbols.ScrollDir(x, toPtr(encode(direction)))
+  }
+
   scroll(x: number, y: number, msDelay = 10) {
     symbols.Scroll(x, y, msDelay)
   }
@@ -44,6 +48,10 @@ export class Bunbot {
 
   scrollSmooth(toy: number, num = 5, sleep = 100, tox = 0) {
     symbols.ScrollSmooth(toy, num, sleep, tox)
+  }
+
+  move(x: number, y: number) {
+    symbols.Move(x, y)
   }
 
   moveRelative(x: number, y: number) {
@@ -63,10 +71,6 @@ export class Bunbot {
 
   scrollMouse(x: number, y: number) {
     symbols.ScrollMouse(x, y)
-  }
-
-  moveMouse(x: number, y: number) {
-    symbols.Move(x, y)
   }
 
   moveSmooth(x: number, y: number, low = 1.0, high = 3.0) {

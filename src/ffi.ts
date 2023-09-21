@@ -31,6 +31,10 @@ export const { symbols } = dlopen(location, {
     returns: FFIType.ptr
   },
   // Mouse
+  ScrollDir: {
+    args: [FFIType.int, FFIType.ptr],
+    returns: FFIType.void
+  },
   Scroll: {
     args: [FFIType.int, FFIType.int, FFIType.int],
     returns: FFIType.void

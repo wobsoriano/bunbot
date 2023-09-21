@@ -6,7 +6,7 @@ Desktop automation for the Bun runtime. Currently works on Mac.
 
 ## Requirements
 
-Bunbot uses [RobotGo](https://github.com/go-vgo/robotgo) via `bun:ffi`. Please see RobotGo's requirements [here](https://github.com/go-vgo/robotgo#requirements).
+Bunbot uses [bot](https://github.com/go-vgo/bot) via `bun:ffi`. Please see bot's requirements [here](https://github.com/go-vgo/bot#requirements).
 
 ## Usage
 
@@ -19,18 +19,29 @@ bun add bunbot
 ```ts
 import { CreateBot } from 'bunbot'
 
-const bb = CreateBot()
+const bot = CreateBot()
 
-// Click
-bb.click()
-// Get mouse position coordinates
-const mousePosition = bb.getMousePosition()
-// Move mouse
-bb.moveMouse(200, 400)
-// Move mouse smoothly
-bb.moveMouseSmooth(200, 400)
-// Scroll mouse
-bb.scrollMouse(100, 200)
+bot.setMouseSleep(100)
+
+bot.scrollDir(10, 'up')
+bot.scrollDir(20, 'right')
+
+bot.scroll(0, -10)
+bot.scroll(100, 0)
+
+bot.milliSleep(100)
+bot.scrollSmooth(-10, 6)
+
+bot.move(10, 20)
+bot.moveRelative(0, -10)
+bot.dragSmooth(10, 10)
+
+bot.click('wheelRight')
+bot.click('left', true)
+bot.moveSmooth(100, 200, 1.0, 10.0)
+
+bot.toggle('left')
+bot.toggle('left', 'up')
 ```
 
 ### Keyboard
