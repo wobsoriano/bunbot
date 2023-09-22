@@ -102,6 +102,9 @@ for (let i = 0; i < num; i++) {
   const path1 = `save_${i}`
   bot.save(img1, `${path1}.png`)
   bot.saveJpeg(img1, `${path1}.jpeg`, 50)
+
+  const img2 = bot.captureImg(10, 10, 20, 20)
+  bot.save(img2, `test_${i}.png`)
 }
 ```
 
