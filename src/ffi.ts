@@ -35,7 +35,7 @@ export const { symbols } = dlopen(location, {
     returns: FFIType.int
   },
   CaptureImg: {
-    args: [],
+    args: [FFIType.int, FFIType.int, FFIType.int, FFIType.int],
     returns: FFIType.ptr
   },
   SetDisplayID: {

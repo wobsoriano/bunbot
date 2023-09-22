@@ -36,8 +36,8 @@ export class Bunbot {
     return symbols.DisplaysNum()
   }
 
-  captureImg(): Pointer {
-    const ptr = symbols.CaptureImg()
+  captureImg(x = 0, y = 0, w = 0, h = 0): Pointer {
+    const ptr = symbols.CaptureImg(x, y, w, h)
     return ptr!
   }
 

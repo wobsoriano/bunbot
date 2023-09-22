@@ -134,13 +134,18 @@ type MyImage struct {
 }
 
 func NewMyImage(img image.Image) *MyImage {
-
 	return &MyImage{img: img}
 }
 
 //export CaptureImg
-func CaptureImg() unsafe.Pointer {
-	captured := robotgo.CaptureImg()
+func CaptureImg(x, y, w, h int) unsafe.Pointer {
+	var captured image.Image
+	if x == 0 && y == 0 && w == 0 && h == 0 {
+		captured = robotgo.CaptureImg()
+	} else {
+		captured = robotgo.CaptureImg(x, y, w, h)
+	}
+
 	img := NewMyImage(captured)
 
 	size := C.size_t(unsafe.Sizeof(MyImage{}))
@@ -163,13 +168,19 @@ func SetDisplayID(value int) {
 //export Save
 func Save(imagePtr unsafe.Pointer, path *C.char, quality int) {
 	img := *(*image.Image)(imagePtr)
-	robotgo.Save(img, str(path), quality)
+	err := robotgo.Save(img, str(path), quality)
+	if err != nil {
+		panic("Failed to save image")
+	}
 }
 
 //export SaveJpeg
 func SaveJpeg(imagePtr unsafe.Pointer, path *C.char, quality int) {
 	img := *(*image.Image)(imagePtr)
-	robotgo.SaveJpeg(img, str(path), quality)
+	err := robotgo.SaveJpeg(img, str(path), quality)
+	if err != nil {
+		panic("Failed to save image")
+	}
 }
 
 /*
