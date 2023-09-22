@@ -30,6 +30,26 @@ export const { symbols } = dlopen(location, {
     args: [],
     returns: FFIType.ptr
   },
+  DisplaysNum: {
+    args: [],
+    returns: FFIType.int
+  },
+  CaptureImg: {
+    args: [],
+    returns: FFIType.ptr
+  },
+  SetDisplayID: {
+    args: [FFIType.int],
+    returns: FFIType.void
+  },
+  Save: {
+    args: [FFIType.ptr, FFIType.ptr, FFIType.int],
+    returns: FFIType.void
+  },
+  SaveJpeg: {
+    args: [FFIType.ptr, FFIType.ptr, FFIType.int],
+    returns: FFIType.void
+  },
   // Mouse
   ScrollDir: {
     args: [FFIType.int, FFIType.ptr],

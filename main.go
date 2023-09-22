@@ -37,6 +37,7 @@ import "C"
 import (
 	"encoding/json"
 	"fmt"
+	"image"
 	"strings"
 	"unsafe"
 
@@ -121,6 +122,54 @@ func GetScaleSize() *C.char {
 		Y: y,
 	})
 	return ch(string(coords))
+}
+
+//export DisplaysNum
+func DisplaysNum() int {
+	return robotgo.DisplaysNum()
+}
+
+type MyImage struct {
+	img image.Image
+}
+
+func NewMyImage(img image.Image) *MyImage {
+
+	return &MyImage{img: img}
+}
+
+//export CaptureImg
+func CaptureImg() unsafe.Pointer {
+	captured := robotgo.CaptureImg()
+	img := NewMyImage(captured)
+
+	size := C.size_t(unsafe.Sizeof(MyImage{}))
+	ptr := C.malloc(size)
+	if ptr == nil {
+		panic("Failed to allocate memory")
+	}
+
+	myImg := (*MyImage)(ptr)
+	*myImg = *img
+
+	return ptr
+}
+
+//export SetDisplayID
+func SetDisplayID(value int) {
+	robotgo.DisplayID = value
+}
+
+//export Save
+func Save(imagePtr unsafe.Pointer, path *C.char, quality int) {
+	img := *(*image.Image)(imagePtr)
+	robotgo.Save(img, str(path), quality)
+}
+
+//export SaveJpeg
+func SaveJpeg(imagePtr unsafe.Pointer, path *C.char, quality int) {
+	img := *(*image.Image)(imagePtr)
+	robotgo.SaveJpeg(img, str(path), quality)
 }
 
 /*

@@ -20,7 +20,7 @@ const TARGETS = [
 
 if (output.success) {
   console.log('Compiling native binaries...')
-  const proc = Bun.spawnSync([
+  const proc = Bun.spawn([
     XGO,
     "-go", "1.20.3",
     "-out", "release/bunbot",
@@ -29,5 +29,6 @@ if (output.success) {
     "-buildmode=c-shared",
     ".",
   ]);
-  console.log(proc.stdout.toString())
+  const text = await new Response(proc.stdout).text();
+  console.log(text);
 }

@@ -1,4 +1,4 @@
-import { ptr as toPtr } from 'bun:ffi'
+import { Pointer, ptr as toPtr } from 'bun:ffi'
 import { symbols } from './ffi'
 import { Coords } from './types'
 import { toString, encode } from './utils'
@@ -30,6 +30,27 @@ export class Bunbot {
   getScaleSize(): Coords {
     const ptr = symbols.GetScaleSize()
     return JSON.parse(toString(ptr))
+  }
+
+  displaysNum(): number {
+    return symbols.DisplaysNum()
+  }
+
+  captureImg(): Pointer {
+    const ptr = symbols.CaptureImg()
+    return ptr!
+  }
+
+  setDisplayID(id: number) {
+    symbols.SetDisplayID(id)
+  }
+
+  save(img: Pointer, path: string, quality = 70) {
+    symbols.Save(img, toPtr(encode(path)), quality)
+  }
+
+  saveJpeg(img: Pointer, path: string, quality = 70) {
+    symbols.SaveJpeg(img, toPtr(encode(path)), quality)
   }
 
   // Mouse
