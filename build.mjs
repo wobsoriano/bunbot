@@ -12,8 +12,8 @@ const output = await Bun.build({
 
 const XGO = path.join(process.env.HOME, 'go/bin/xgo');
 const TARGETS = [
-  // 'linux/arm64',
-  // 'linux/amd64',
+  'linux/arm64',
+  'linux/amd64',
   'darwin/arm64',
   'darwin/amd64'
 ];
