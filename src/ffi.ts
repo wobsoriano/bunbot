@@ -30,7 +30,47 @@ export const { symbols } = dlopen(location, {
     args: [],
     returns: FFIType.ptr
   },
+  DisplaysNum: {
+    args: [],
+    returns: FFIType.int
+  },
+  CaptureImg: {
+    args: [FFIType.int, FFIType.int, FFIType.int, FFIType.int],
+    returns: FFIType.ptr
+  },
+  SetDisplayID: {
+    args: [FFIType.int],
+    returns: FFIType.void
+  },
+  FreeImage: {
+    args: [FFIType.ptr],
+    returns: FFIType.void
+  },
+  Save: {
+    args: [FFIType.ptr, FFIType.ptr, FFIType.int],
+    returns: FFIType.void
+  },
+  SaveJpeg: {
+    args: [FFIType.ptr, FFIType.ptr, FFIType.int],
+    returns: FFIType.void
+  },
   // Mouse
+  ScrollDir: {
+    args: [FFIType.int, FFIType.ptr],
+    returns: FFIType.void
+  },
+  Scroll: {
+    args: [FFIType.int, FFIType.int, FFIType.int],
+    returns: FFIType.void
+  },
+  MilliSleep: {
+    args: [FFIType.int],
+    returns: FFIType.void
+  },
+  ScrollSmooth: {
+    args: [FFIType.int, FFIType.int, FFIType.int, FFIType.int],
+    returns: FFIType.void
+  },
   SetMouseSleep: {
     args: [FFIType.int],
     returns: FFIType.void
@@ -43,7 +83,11 @@ export const { symbols } = dlopen(location, {
     args: [FFIType.int, FFIType.int],
     returns: FFIType.void
   },
-  Drag: {
+  MoveRelative: {
+    args: [FFIType.int, FFIType.int],
+    returns: FFIType.void
+  },
+  DragSmooth: {
     args: [FFIType.int, FFIType.int],
     returns: FFIType.void
   },
@@ -51,7 +95,11 @@ export const { symbols } = dlopen(location, {
     args: [FFIType.int, FFIType.int, FFIType.f64, FFIType.f64],
     returns: FFIType.bool
   },
-  GetMousePos: {
+  Toggle: {
+    args: [FFIType.ptr, FFIType.ptr],
+    returns: FFIType.void
+  },
+  Location: {
     args: [],
     returns: FFIType.ptr
   },
@@ -68,12 +116,31 @@ export const { symbols } = dlopen(location, {
     args: [FFIType.ptr, FFIType.ptr],
     returns: FFIType.ptr
   },
+  KeyToggle: {
+    args: [FFIType.ptr, FFIType.ptr],
+    returns: FFIType.ptr
+  },
+  WriteAll: {
+    args: [FFIType.ptr],
+    returns: FFIType.void
+  },
   GetText: {
     args: [FFIType.ptr],
     returns: FFIType.ptr
   },
+  ReadAll: {
+    returns: FFIType.ptr
+  },
   FreeString: {
     args: [FFIType.ptr],
+    returns: FFIType.void
+  },
+  Sleep: {
+    args: [FFIType.int],
+    returns: FFIType.void
+  },
+  SetKeySleep: {
+    args: [FFIType.int],
     returns: FFIType.void
   }
 })

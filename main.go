@@ -37,6 +37,7 @@ import "C"
 import (
 	"encoding/json"
 	"fmt"
+	"image"
 	"strings"
 	"unsafe"
 
@@ -123,6 +124,70 @@ func GetScaleSize() *C.char {
 	return ch(string(coords))
 }
 
+//export DisplaysNum
+func DisplaysNum() int {
+	return robotgo.DisplaysNum()
+}
+
+type MyImage struct {
+	img image.Image
+}
+
+func NewMyImage(img image.Image) *MyImage {
+	return &MyImage{img: img}
+}
+
+//export CaptureImg
+func CaptureImg(x, y, w, h int) unsafe.Pointer {
+	var captured image.Image
+	if x == 0 && y == 0 && w == 0 && h == 0 {
+		captured = robotgo.CaptureImg()
+	} else {
+		captured = robotgo.CaptureImg(x, y, w, h)
+	}
+
+	img := NewMyImage(captured)
+
+	size := C.size_t(unsafe.Sizeof(MyImage{}))
+	ptr := C.malloc(size)
+	if ptr == nil {
+		panic("Failed to allocate memory")
+	}
+
+	myImg := (*MyImage)(ptr)
+	*myImg = *img
+
+	return ptr
+}
+
+//export FreeImage
+func FreeImage(imagePtr unsafe.Pointer) {
+	C.free(imagePtr)
+}
+
+//export SetDisplayID
+func SetDisplayID(value int) {
+	robotgo.DisplayID = value
+}
+
+//export Save
+func Save(imagePtr unsafe.Pointer, path *C.char, quality int) {
+	img := *(*image.Image)(imagePtr)
+	err := robotgo.Save(img, str(path), quality)
+	if err != nil {
+		panic("Failed to save image")
+	}
+}
+
+//export SaveJpeg
+func SaveJpeg(imagePtr unsafe.Pointer, path *C.char, quality int) {
+	img := *(*image.Image)(imagePtr)
+	err := robotgo.SaveJpeg(img, str(path), quality)
+	if err != nil {
+		panic("Failed to save image")
+	}
+}
+
 /*
 .___  ___.   ______    __    __       _______. _______
 |   \/   |  /  __  \  |  |  |  |     /       ||   ____|
@@ -131,6 +196,26 @@ func GetScaleSize() *C.char {
 |  |  |  | |  `--'  | |  `--'  | .----)   |   |  |____
 |__|  |__|  \______/   \______/  |_______/    |_______|
 */
+
+//export ScrollDir
+func ScrollDir(x int, direction *C.char) {
+	robotgo.ScrollDir(x, str(direction))
+}
+
+//export Scroll
+func Scroll(x, y, msDelay int) {
+	robotgo.Scroll(x, y, msDelay)
+}
+
+//export MilliSleep
+func MilliSleep(tm int) {
+	robotgo.MilliSleep(tm)
+}
+
+//export ScrollSmooth
+func ScrollSmooth(toy, num, sleep, tox int) {
+	robotgo.ScrollSmooth(toy, num, sleep, tox)
+}
 
 //export SetMouseSleep
 func SetMouseSleep(millisecond int) {
@@ -147,8 +232,13 @@ func Move(x, y int) {
 	robotgo.Move(x, y)
 }
 
-//export Drag
-func Drag(x, y int) {
+//export MoveRelative
+func MoveRelative(x, y int) {
+	robotgo.MoveRelative(x, y)
+}
+
+//export DragSmooth
+func DragSmooth(x, y int) {
 	robotgo.DragSmooth(x, y)
 }
 
@@ -157,8 +247,13 @@ func MoveSmooth(x, y int, low, high float64) bool {
 	return robotgo.MoveSmooth(x, y, low, high)
 }
 
-//export GetMousePos
-func GetMousePos() *C.char {
+//export Toggle
+func Toggle(key, direction *C.char) {
+	robotgo.Toggle(str(key), str(direction))
+}
+
+//export Location
+func Location() *C.char {
 	x, y := robotgo.Location()
 	coords, _ := json.Marshal(&Coords{
 		X: x,
@@ -186,6 +281,16 @@ func TypeStr(c *C.char) {
 	robotgo.TypeStr(str(c))
 }
 
+//export Sleep
+func Sleep(tm int) {
+	robotgo.Sleep(tm)
+}
+
+//export SetKeySleep
+func SetKeySleep(tm int) {
+	robotgo.KeySleep = tm
+}
+
 //export KeyTap
 func KeyTap(key *C.char, vals *C.char) *C.char {
 	arr := strings.Split(str(vals), ",")
@@ -199,6 +304,37 @@ func KeyTap(key *C.char, vals *C.char) *C.char {
 	}
 
 	return ch("")
+}
+
+//export KeyToggle
+func KeyToggle(key *C.char, vals *C.char) *C.char {
+	arr := strings.Split(str(vals), ",")
+	args := make([]interface{}, len(arr))
+	for i, s := range arr {
+		args[i] = s
+	}
+	err := robotgo.KeyToggle(str(key), args...)
+	if err != nil {
+		return ech(err)
+	}
+
+	return ch("")
+}
+
+//export WriteAll
+func WriteAll(text *C.char) {
+	robotgo.WriteAll(str(text))
+}
+
+//export ReadAll
+func ReadAll() *C.char {
+	result, err := robotgo.ReadAll()
+
+	resultAndError, _ := json.Marshal(&ResultAndError{
+		Result: result,
+		Error:  sf(err),
+	})
+	return ch(string(resultAndError))
 }
 
 //export GetText
