@@ -4,12 +4,12 @@ import { Coords } from './types'
 import { toString, encode } from './utils'
 
 export class Bunbot {
-  constructor() {}
+  constructor() { }
 
   freeString(ptr: number) {
     symbols.FreeString(ptr)
   }
-  
+
   getRobotGoVersion(): string {
     const ptr = symbols.GetVersion()
     return toString(ptr)
@@ -45,12 +45,12 @@ export class Bunbot {
     symbols.SetDisplayID(id)
   }
 
-  save(img: Pointer, path: string, quality = 70) {
-    symbols.Save(img, toPtr(encode(path)), quality)
+  save(imgPtr: Pointer, path: string, quality = 70) {
+    symbols.Save(imgPtr, toPtr(encode(path)), quality)
   }
 
-  saveJpeg(img: Pointer, path: string, quality = 70) {
-    symbols.SaveJpeg(img, toPtr(encode(path)), quality)
+  saveJpeg(imgPtr: Pointer, path: string, quality = 70) {
+    symbols.SaveJpeg(imgPtr, toPtr(encode(path)), quality)
   }
 
   // Mouse
@@ -104,12 +104,12 @@ export class Bunbot {
 
   Location(): Coords {
     const ptr = symbols.Location()
-    return JSON.parse(toString(ptr)) 
+    return JSON.parse(toString(ptr))
   }
 
   /**
-   * @param {string} button Button to click to 
-   * @param {boolean} doubleClick Should double click 
+   * @param {string} button Button to click to
+   * @param {boolean} doubleClick Should double click
    */
   click(button: 'right' | 'left' | 'wheelLeft' | 'wheelRight' = 'left', doubleClick = false) {
     symbols.Click(toPtr(encode(button)), doubleClick)
@@ -128,7 +128,7 @@ export class Bunbot {
    * @param {string} key Key
    * @param {string} modifiers Modifiers
    */
-   keyTap(key: string, ...modifiers: string[]) {
+  keyTap(key: string, ...modifiers: string[]) {
     const keyPtr = toPtr(encode(key))
     const modifiersPtr = toPtr(encode(modifiers))
     symbols.KeyTap(keyPtr, modifiersPtr)
@@ -138,7 +138,7 @@ export class Bunbot {
    * @param {string} key Key
    * @param {string} modifiers Modifiers
    */
-   keyToggle(key: string, ...modifiers: string[]) {
+  keyToggle(key: string, ...modifiers: string[]) {
     const keyPtr = toPtr(encode(key))
     const modifiersPtr = toPtr(encode(modifiers))
     symbols.KeyToggle(keyPtr, modifiersPtr)
@@ -147,7 +147,7 @@ export class Bunbot {
   /**
    * Write string to clipboard
    */
-   writeAll(text: string) {
+  writeAll(text: string) {
     const textPtr = toPtr(encode(text))
     symbols.WriteAll(textPtr)
   }
@@ -161,17 +161,17 @@ export class Bunbot {
       result: string,
       error: string
     }
-    
+
     if (error !== '') {
       throw new Error(error)
     }
-    
+
     return result
   }
 
   /**
    * Get the image text using Tesseract OCR.
-   * @param {string} imagePath 
+   * @param {string} imagePath
    * @returns {string}
    */
   getText(imagePath: string) {
@@ -180,7 +180,7 @@ export class Bunbot {
       result: string,
       error: string
     }
-    
+
     if (error !== '') {
       throw new Error(error)
     }

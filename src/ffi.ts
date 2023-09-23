@@ -42,6 +42,10 @@ export const { symbols } = dlopen(location, {
     args: [FFIType.int],
     returns: FFIType.void
   },
+  FreeImage: {
+    args: [FFIType.ptr],
+    returns: FFIType.void
+  },
   Save: {
     args: [FFIType.ptr, FFIType.ptr, FFIType.int],
     returns: FFIType.void

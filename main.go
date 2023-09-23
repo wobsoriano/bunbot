@@ -160,6 +160,11 @@ func CaptureImg(x, y, w, h int) unsafe.Pointer {
 	return ptr
 }
 
+//export FreeImage
+func FreeImage(imagePtr unsafe.Pointer) {
+	C.free(imagePtr)
+}
+
 //export SetDisplayID
 func SetDisplayID(value int) {
 	robotgo.DisplayID = value
